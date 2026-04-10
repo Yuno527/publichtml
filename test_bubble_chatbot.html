@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDSF6XMHJ6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-LDSF6XMHJ6');
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Chatbot Burbuja</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-info {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-info h1 {
+            color: #667eea;
+        }
+        .test-info ul {
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5885LF4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <div class="test-info">
+        <h1>🧪 Test del Chatbot Burbuja</h1>
+        <p>Esta página es para probar que el chatbot burbuja funciona correctamente.</p>
+        <h2>Instrucciones:</h2>
+        <ul>
+            <li>Deberías ver un botón circular flotante en la esquina inferior derecha</li>
+            <li>El botón debe tener un icono de robot 🤖</li>
+            <li>Al hacer clic, debería abrirse el chatbot completo</li>
+            <li>Si no ves el botón, abre la consola del navegador (F12) para ver errores</li>
+        </ul>
+        <h2>Verificación:</h2>
+        <ul>
+            <li>✅ Abre la consola del navegador (F12)</li>
+            <li>✅ Busca el elemento con id "bubble-chatbot-button" en el inspector</li>
+            <li>✅ Verifica que no haya errores de JavaScript</li>
+        </ul>
+    </div>
+
+    <script src="bubble_chatbot.js"></script>
+    <script>
+        // Verificar después de 2 segundos si el botón se creó
+        setTimeout(() => {
+            const button = document.getElementById('bubble-chatbot-button');
+            const container = document.getElementById('bubble-chatbot-container');
+            
+            console.log('=== VERIFICACIÓN DEL CHATBOT ===');
+            console.log('Botón encontrado:', button ? '✅ SÍ' : '❌ NO');
+            console.log('Contenedor encontrado:', container ? '✅ SÍ' : '❌ NO');
+            
+            if (button) {
+                console.log('Estilos del botón:', window.getComputedStyle(button));
+                console.log('Z-index:', window.getComputedStyle(button).zIndex);
+            }
+            
+            if (typeof bubbleChatbot !== 'undefined') {
+                console.log('Instancia del chatbot:', bubbleChatbot ? '✅ CREADA' : '❌ NO CREADA');
+            } else {
+                console.log('❌ La variable bubbleChatbot no está definida');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
+

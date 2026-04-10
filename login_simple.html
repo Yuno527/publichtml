@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Aicroom</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDSF6XMHJ6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-LDSF6XMHJ6');
+        </script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5885LF4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <!-- Login Section -->
+    <section class="login-section">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-header">
+                    <div class="logo-container">
+                        <img src="images/logo.jpeg" alt="Aicroom Logo" class="logo">
+                        <span class="logo-text">Aicroom</span>
+                    </div>
+                    <h1>Iniciar Sesión</h1>
+                    <p>Accede a tu cuenta para continuar</p>
+                </div>
+                
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="fas fa-user"></i>
+                            Nombre de Usuario
+                        </label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Contraseña
+                        </label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="remember" name="remember">
+                            <span class="checkmark"></span>
+                            Recordarme
+                        </label>
+                        <a href="#" class="forgot-password" style="opacity: 0.6; cursor: not-allowed; pointer-events: none;" title="Temporalmente deshabilitado">¿Olvidaste tu contraseña?</a>
+                        <br><br>
+                        <span style="color: #888; text-decoration: line-through;">PRUEBA: Ir a recuperar contraseña</span>
+                        <br>
+                        <a href="test_navigation.html" style="color: green; text-decoration: underline;">PRUEBA: Página de prueba</a>
+                        <br>
+                        <a href="test_navigation.php" style="color: red; text-decoration: underline;">PRUEBA: Página PHP</a>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Iniciar Sesión
+                    </button>
+                </form>
+                
+                <div class="login-footer">
+                    <p>¿No tienes una cuenta? <a href="register.html">Regístrate aquí</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="login.js"></script>
+</body>
+</html>

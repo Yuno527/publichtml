@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDSF6XMHJ6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-LDSF6XMHJ6');
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Cerrar Sesión - AICROOM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .test-controls {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .test-controls button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .user-btn {
+            background: #007bff;
+            color: white;
+        }
+        .status {
+            margin: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .user-status {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5885LF4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <div class="test-controls">
+        <h2>🧪 Prueba de Cerrar Sesión y Roles</h2>
+        <p>Simula diferentes usuarios y roles:</p>
+        <button class="user-btn" onclick="loginAsUser('Sofía')">👩 Simular Sofía (Usuario)</button>
+        <button class="user-btn" onclick="loginAsUser('MADE')">👨 Simular MADE (Usuario)</button>
+        <button class="user-btn" onclick="loginAsUser('Carlos')">👨 Simular Carlos (Usuario)</button>
+        <button class="user-btn" onclick="loginAsAdmin('Admin')">👑 Simular Admin</button>
+        <div id="status" class="status user-status">Estado: Usuario por defecto</div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.jpeg" alt="Logo AICROOM" style="height: 40px; margin-right: 10px;">
+                    AICROOM<span>IA</span>
+                </a>
+                
+                <!-- Menú desktop -->
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="como-funciona.html" class="nav-link">Cómo funciona</a></li>
+                    <li class="nav-item"><a href="empresa.html" class="nav-link">Sobre nosotros</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li class="nav-item admin-only" id="results-desktop"><a href="resultados.html" class="nav-link">Resultados</a></li>
+                    <li class="nav-item"><a href="chatbot.html" class="nav-link">Evaluación IA</a></li>
+                </ul>
+                
+                <!-- Menú usuario desktop -->
+                <div class="user-menu">
+                    <span class="user-name">Usuario</span>
+                </div>
+                
+                <!-- Botón hamburguesa -->
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <!-- Menú móvil -->
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="mobile-nav-menu">
+                    <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Inicio</a></li>
+                    <li class="mobile-nav-item"><a href="como-funciona.html" class="mobile-nav-link">Cómo funciona</a></li>
+                    <li class="mobile-nav-item"><a href="empresa.html" class="mobile-nav-link">Sobre nosotros</a></li>
+                    <li class="mobile-nav-item"><a href="contacto.html" class="mobile-nav-link">Contacto</a></li>
+                    <li class="mobile-nav-item admin-only" id="results-mobile"><a href="resultados.html" class="mobile-nav-link">Resultados</a></li>
+                    <li class="mobile-nav-item"><a href="chatbot.html" class="mobile-nav-link">Evaluación IA</a></li>
+                </ul>
+                <div class="mobile-user-section">
+                    <div class="mobile-user-name">Usuario</div>
+                </div>
+            </div>
+            
+            <!-- Overlay para cerrar menú -->
+            <div class="overlay" id="overlay"></div>
+        </nav>
+    </header>
+
+    <main style="padding: 40px 20px; text-align: center;">
+        <h1>Prueba de Cerrar Sesión</h1>
+        <p>Esta página te permite probar el menú de usuario con solo la opción "Cerrar sesión".</p>
+        
+        <h2>Instrucciones:</h2>
+        <ol style="text-align: left; max-width: 600px; margin: 0 auto;">
+            <li><strong>Haz clic en los botones</strong> para simular diferentes usuarios y roles</li>
+            <li><strong>Observa cómo cambia</strong> el nombre en la navegación</li>
+            <li><strong>Verifica que "Resultados"</strong> solo aparece para administradores</li>
+            <li><strong>Haz clic en el nombre del usuario</strong> para ver el menú desplegable</li>
+            <li><strong>Haz clic en "Cerrar sesión"</strong> para probar la funcionalidad</li>
+            <li><strong>Prueba en móvil</strong> usando el menú hamburguesa</li>
+        </ol>
+        
+        <h2>Características:</h2>
+        <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+            <li>✅ <strong>Nombre dinámico</strong> - Se actualiza según el usuario</li>
+            <li>✅ <strong>Control de roles</strong> - "Resultados" solo para administradores</li>
+            <li>✅ <strong>Menú simple</strong> - Solo opción "Cerrar sesión"</li>
+            <li>✅ <strong>Funcionalidad completa</strong> - Limpia datos y redirige</li>
+            <li>✅ <strong>Responsive</strong> - Funciona en desktop y móvil</li>
+        </ul>
+        
+        <h2>Estado actual:</h2>
+        <div id="current-status" style="margin: 20px 0; padding: 15px; background: #e9ecef; border-radius: 5px;">
+            Cargando...
+        </div>
+    </main>
+
+    <script src="nav-mobile.js"></script>
+    <script src="user-menu.js"></script>
+    
+    <script>
+        // Actualizar la interfaz cuando cambie el usuario
+        function updateUI() {
+            const userName = getCurrentUserName();
+            const userRole = getCurrentRole();
+            const statusDiv = document.getElementById('status');
+            const currentStatusDiv = document.getElementById('current-status');
+            
+            statusDiv.textContent = `Estado: ${userName} (${userRole})`;
+            currentStatusDiv.innerHTML = `👤 <strong>Usuario actual:</strong> ${userName} - <strong>Rol:</strong> ${userRole}`;
+        }
+        
+        // Actualizar la UI al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            updateUI();
+        });
+        
+        // Sobrescribir las funciones para actualizar la UI
+        const originalLoginAsUser = window.loginAsUser;
+        
+        window.loginAsUser = function(userName) {
+            localStorage.setItem('userName', userName);
+            localStorage.setItem('userRole', 'user');
+            updateUI();
+            
+            // Actualizar elementos de admin
+            const adminElements = document.querySelectorAll('.admin-only');
+            adminElements.forEach(element => {
+                element.classList.add('hide-for-users');
+                element.classList.remove('show-for-admin');
+            });
+        };
+        
+        // Función para simular admin
+        window.loginAsAdmin = function(userName) {
+            localStorage.setItem('userName', userName);
+            localStorage.setItem('userRole', 'admin');
+            updateUI();
+            
+            // Actualizar elementos de admin
+            const adminElements = document.querySelectorAll('.admin-only');
+            adminElements.forEach(element => {
+                element.classList.remove('hide-for-users');
+                element.classList.add('show-for-admin');
+            });
+        };
+    </script>
+</body>
+</html>

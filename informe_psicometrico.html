@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Evaluación Psicométrica - AICROOM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --blue-primary: #004a99;
+            --green: #4caf50;
+            --orange: #ff9800;
+            --red: #d32f2f;
+            --blue-bar: #2196f3;
+            --bg-soft: #e8eef5;
+            --text: #1a1a1a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Open Sans', Arial, sans-serif;
+            background: #e9ecef;
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 24px 16px 48px;
+        }
+
+        .report-wrap {
+            max-width: 920px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid #dde3ea;
+        }
+
+        .report-inner {
+            padding: 32px 36px 40px;
+        }
+
+        .report-title {
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: var(--blue-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin: 0 0 8px;
+        }
+
+        .report-subtitle {
+            color: var(--blue-primary);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin: 0 0 24px;
+        }
+
+        .meta-block {
+            margin-bottom: 28px;
+        }
+
+        .meta-block p {
+            margin: 6px 0;
+            font-size: 0.95rem;
+        }
+
+        .meta-block strong {
+            color: var(--blue-primary);
+        }
+
+        .section-bar {
+            background: var(--blue-primary);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 18px;
+            margin: 28px -36px 0;
+            width: calc(100% + 72px);
+        }
+
+        .section-bar.first {
+            margin-top: 0;
+        }
+
+        .objective-body {
+            background: var(--bg-soft);
+            padding: 16px 20px;
+            margin: 0 -36px;
+            width: calc(100% + 72px);
+            font-size: 0.95rem;
+            border-bottom: 1px solid #dde3ea;
+        }
+
+        .two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin: 0 -36px 0;
+            width: calc(100% + 72px);
+            border: 1px solid #dde3ea;
+            border-top: none;
+        }
+
+        .col-panel {
+            padding: 20px 22px;
+            min-height: 160px;
+        }
+
+        .col-panel.left {
+            border-right: 1px solid #dde3ea;
+            background: #fafcfe;
+        }
+
+        .col-panel.right {
+            background: #fffaf5;
+        }
+
+        .col-panel h4 {
+            margin: 0 0 12px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .col-panel.left h4 {
+            color: var(--blue-primary);
+        }
+
+        .col-panel.right h4 {
+            color: var(--orange);
+        }
+
+        .col-panel .sub {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .col-panel ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .col-panel li {
+            margin-bottom: 6px;
+        }
+
+        .competency-list {
+            padding: 24px 0 8px;
+        }
+
+        .comp-row {
+            margin-bottom: 18px;
+        }
+
+        .comp-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            font-size: 0.92rem;
+        }
+
+        .comp-name {
+            font-weight: 600;
+        }
+
+        .comp-meta {
+            color: #555;
+            font-size: 0.88rem;
+        }
+
+        .comp-meta strong {
+            color: var(--text);
+        }
+
+        .bar-track {
+            height: 22px;
+            background: #e0e4e8;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+
+        .bar-fill.orange {
+            background: linear-gradient(90deg, #ffb74d, var(--orange));
+        }
+
+        .bar-fill.blue {
+            background: linear-gradient(90deg, #64b5f6, var(--blue-bar));
+        }
+
+        .bar-fill.green {
+            background: linear-gradient(90deg, #81c784, var(--green));
+        }
+
+        .bar-fill.red {
+            background: linear-gradient(90deg, #ef5350, var(--red));
+        }
+
+        .bar-fill.neutral {
+            background: linear-gradient(90deg, #cfd8dc, #b0bec5);
+        }
+
+        .bar-track-muted {
+            opacity: 0.85;
+        }
+
+        .comp-row-unmeasured .comp-meta-muted {
+            color: #777;
+            font-size: 0.86rem;
+            font-weight: 500;
+        }
+
+        .comp-items-note {
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin: 28px -36px 0;
+            width: calc(100% + 72px);
+            border: 1px solid #dde3ea;
+        }
+
+        .bottom-box .box-head {
+            background: var(--blue-primary);
+            color: #fff;
+            font-weight: 700;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+        }
+
+        .bottom-box .box-body {
+            padding: 20px 18px;
+            min-height: 160px;
+            background: #fafcfe;
+        }
+
+        .bottom-box:first-child {
+            border-right: 1px solid #dde3ea;
+        }
+
+        .conclusion-icon {
+            font-size: 2rem;
+            color: var(--blue-primary);
+            margin-bottom: 12px;
+        }
+
+        .conclusion-text {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .conclusion-lead {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--blue-primary);
+            margin: 0 0 14px;
+            line-height: 1.45;
+        }
+
+        .conclusion-detail {
+            margin-top: 12px;
+        }
+
+        .conclusion-detail .para-block,
+        .rec-rich p {
+            font-size: 0.95rem;
+            color: #333;
+            margin: 0 0 12px;
+            line-height: 1.65;
+        }
+
+        .conclusion-detail .para-block:last-child,
+        .rec-rich p:last-child {
+            margin-bottom: 0;
+        }
+
+        .conclusion-comp-ref {
+            font-size: 0.9rem;
+            color: #444;
+            margin: 14px 0;
+            padding: 12px 14px;
+            background: #eef3f9;
+            border-radius: 6px;
+            border-left: 4px solid var(--blue-primary);
+        }
+
+        .comp-insight {
+            font-size: 0.92rem;
+            color: #444;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed #c5d0dc;
+        }
+
+        .rec-rich {
+            text-align: left;
+        }
+
+        .rec-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .rec-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 0.92rem;
+        }
+
+        .rec-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            background: var(--blue-primary);
+            border-radius: 50%;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-outline {
+            background: #fff;
+            color: var(--blue-primary);
+            border: 2px solid var(--blue-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--bg-soft);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 48px 24px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .empty-state h1 {
+            color: var(--blue-primary);
+            font-size: 1.25rem;
+        }
+
+        @media (max-width: 720px) {
+
+            .two-cols,
+            .bottom-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .col-panel.left {
+                border-right: none;
+                border-bottom: 1px solid #dde3ea;
+            }
+
+            .bottom-box:first-child {
+                border-right: none;
+                border-bottom: 1px solid #dde3ea;
+            }
+
+            .report-inner {
+                padding: 20px 18px 28px;
+            }
+
+            .section-bar,
+            .objective-body,
+            .two-cols,
+            .bottom-grid {
+                margin-left: -18px;
+                margin-right: -18px;
+                width: calc(100% + 36px);
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+
+            .toolbar {
+                display: none;
+            }
+
+            .report-wrap {
+                box-shadow: none;
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        const STORAGE_KEY = 'aicroom_psych_report';
+
+        function escapeHtml(str) {
+            if (str == null || str === '') return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function loadReport() {
+            try {
+                const raw = sessionStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+                return JSON.parse(raw);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function isCompetencyMeasured(c) {
+            if (c.measured === false) return false;
+            if (c.measured === true) return true;
+            return typeof c.percent === 'number' && !isNaN(c.percent);
+        }
+
+        function renderCompetencies(items) {
+            if (!items || !items.length) return '';
+            return items.map((c) => {
+                if (!isCompetencyMeasured(c)) {
+                    return `
+                <div class="comp-row comp-row-unmeasured">
+                    <div class="comp-head">
+                        <span class="comp-name">${escapeHtml(c.name)}</span>
+                        <span class="comp-meta comp-meta-muted">Ningún ítem de esta competencia en las 10 preguntas de esta sesión</span>
+                    </div>
+                    <div class="bar-track bar-track-muted">
+                        <div class="bar-fill neutral" style="width:0%"></div>
+                    </div>
+                </div>`;
+                }
+                var n = typeof c.itemsCount === 'number' ? c.itemsCount : null;
+                var note = n != null ? ' <span class="comp-items-note">· ' + n + ' ítem' + (n !== 1 ? 's' : '') + ' en esta evaluación</span>' : '';
+                return `
+                <div class="comp-row">
+                    <div class="comp-head">
+                        <span class="comp-name">${escapeHtml(c.name)}</span>
+                        <span class="comp-meta"><strong>${c.percent}%</strong> · ${escapeHtml(c.level)}</span>${note}
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill ${escapeHtml(c.barTone)}" style="width:${c.percent}%"></div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function renderList(items) {
+            if (!items || !items.length) return '<ul><li>No especificado</li></ul>';
+            return '<ul>' + items.map((x) => '<li>' + escapeHtml(x) + '</li>').join('') + '</ul>';
+        }
+
+        function paragraphsToHtml(text, className) {
+            if (!text || !String(text).trim()) return '';
+            return String(text).trim().split(/\n\n+/).filter(Boolean).map(function (para) {
+                return '<p class="' + className + '">' + escapeHtml(para).replace(/\n/g, '<br>') + '</p>';
+            }).join('');
+        }
+
+        function buildCompetencyInsight(competencies) {
+            if (!competencies || !competencies.length) return '';
+            var measured = competencies.filter(function (c) {
+                return c.measured !== false && typeof c.percent === 'number';
+            });
+            if (measured.length < 2) return '';
+            var sorted = measured.slice().sort(function (a, b) { return b.percent - a.percent; });
+            var top = sorted[0];
+            var bottom = sorted[sorted.length - 1];
+            if (top.name === bottom.name) return '';
+            return 'En la distribución por competencias evaluadas en esta sesión, ' + top.name + ' (' + top.percent + '%) muestra el mejor desempeño relativo, mientras que ' +
+                bottom.name + ' (' + bottom.percent + '%) concentra la mayor oportunidad de desarrollo.';
+        }
+
+        function buildConclusionHtml(data, p) {
+            var icon = '<div class="conclusion-icon"><i class="fas fa-clipboard-check"></i></div>';
+            var analysis = (p.analysis || '').trim();
+            var lead = (data.conclusionShort || '').trim();
+            var refParts = [];
+            if (p.strongSkill) refParts.push('<strong>Mayor evidencia:</strong> ' + escapeHtml(p.strongSkill));
+            if (p.weakSkill) refParts.push('<strong>Mayor oportunidad:</strong> ' + escapeHtml(p.weakSkill));
+            var refBlock = refParts.length
+                ? '<div class="conclusion-comp-ref">' + refParts.join('<br>') + '</div>'
+                : '';
+
+            var analysisNorm = analysis.replace(/\s+/g, ' ').toLowerCase();
+            var leadNorm = lead.replace(/\s+/g, ' ').toLowerCase();
+            var leadIsPrefixOfAnalysis = lead && analysis && analysisNorm.indexOf(leadNorm.slice(0, Math.min(leadNorm.length, 160))) === 0;
+
+            var bodyParts = [];
+            if (lead && !leadIsPrefixOfAnalysis) {
+                bodyParts.push('<p class="conclusion-lead">' + escapeHtml(lead) + '</p>');
+            }
+            if (analysis) {
+                bodyParts.push('<div class="conclusion-detail">' + paragraphsToHtml(analysis, 'para-block conclusion-text') + '</div>');
+            } else if (!lead) {
+                bodyParts.push('<p class="conclusion-text">Perfil con fortalezas identificadas y áreas de desarrollo.</p>');
+            }
+
+            var insight = buildCompetencyInsight(data.competencies);
+            if (insight) {
+                bodyParts.push('<p class="comp-insight conclusion-text">' + escapeHtml(insight) + '</p>');
+            }
+
+            return icon + refBlock + bodyParts.join('');
+        }
+
+        function splitRecommendationBlocks(text) {
+            var t = String(text).trim();
+            if (!t) return [];
+            var blocks = t.split(/\n\n+/).filter(Boolean);
+            if (blocks.length === 1 && /\n/.test(t) && !/\n\n/.test(t)) {
+                blocks = t.split(/\n+/).map(function (s) { return s.trim(); }).filter(Boolean);
+            }
+            return blocks;
+        }
+
+        function buildRecommendationsHtml(recLines, fullRecommendation) {
+            var text = (fullRecommendation || '').trim();
+            if (!text && recLines && recLines.length) {
+                return '<ul class="rec-list">' + recLines.map(function (t, i) {
+                    return '<li><strong>' + (i + 1) + '.</strong> ' + escapeHtml(t) + '</li>';
+                }).join('') + '</ul>';
+            }
+            if (!text) return '<p class="conclusion-text">—</p>';
+
+            var numbered = text.match(/\d+[\.\)]\s*[^\n]+(?:\n(?!\d+[\.\)])[^\n]+)*/g);
+            if (numbered && numbered.length >= 2) {
+                var items = numbered.map(function (block) {
+                    return block.replace(/^\d+[\.\)]\s*/, '').replace(/\s+/g, ' ').trim();
+                });
+                return '<ul class="rec-list">' + items.map(function (t, i) {
+                    return '<li><strong>' + (i + 1) + '.</strong> ' + escapeHtml(t) + '</li>';
+                }).join('') + '</ul>';
+            }
+
+            var blocks = splitRecommendationBlocks(text);
+            var rich = blocks.map(function (para) {
+                return '<p class="para-block conclusion-text">' + escapeHtml(para).replace(/\n/g, '<br>') + '</p>';
+            }).join('');
+            if (rich) {
+                return '<div class="rec-rich">' + rich + '</div>';
+            }
+            return '<p class="conclusion-text">' + escapeHtml(text) + '</p>';
+        }
+
+        const data = loadReport();
+        const app = document.getElementById('app');
+
+        if (!data) {
+            app.innerHTML = `
+                <div class="report-wrap">
+                    <div class="empty-state">
+                        <h1>Informe no disponible</h1>
+                        <p>Completa primero la evaluación de habilidades blandas para generar tu informe.</p>
+                        <div class="toolbar" style="margin-top:20px">
+                            <a class="btn btn-outline" href="chatbot.html"><i class="fas fa-arrow-left"></i> Ir a la evaluación</a>
+                        </div>
+                    </div>
+                </div>`;
+        } else {
+            const p = data.parsed || {};
+            const strengths = data.strengths && data.strengths.length ? data.strengths : (p.strongSkill ? [p.strongSkill] : ['—']);
+            const opps = data.opportunities && data.opportunities.length ? data.opportunities : (p.weakSkill ? [p.weakSkill] : ['—']);
+            const recLines = data.recommendationLines || [];
+            const recFallback = p.recommendation || '';
+
+            app.innerHTML = `
+                <div class="report-wrap">
+                    <div class="report-inner">
+                        <h1 class="report-title">Informe de evaluación psicométrica</h1>
+                        <p class="report-subtitle">Evaluación de habilidades blandas</p>
+
+                        <div class="meta-block">
+                            <p><strong>Candidato:</strong> ${escapeHtml(data.userName || '—')}</p>
+                            <p><strong>Fecha:</strong> ${escapeHtml(data.dateLocale || '—')}</p>
+                            <p><strong>Evaluador:</strong> Área de Psicología Organizacional — AICROOM</p>
+                        </div>
+
+                        <div class="section-bar first">Objetivo de la evaluación</div>
+                        <div class="objective-body">
+                            Analizar el perfil conductual en habilidades blandas clave para el desempeño organizacional,
+                            con base en las respuestas del cuestionario y un análisis interpretativo profesional.
+                        </div>
+
+                        <div class="section-bar">Análisis detallado del perfil</div>
+                        <div class="two-cols">
+                            <div class="col-panel left">
+                                <h4>Funcional con potencial de desarrollo</h4>
+                                <div class="sub">Fortalezas</div>
+                                ${renderList(strengths)}
+                            </div>
+                        </div>
+
+                        <div class="section-bar">Resultados por competencia</div>
+                        <p style="font-size:0.88rem;color:#555;margin:12px 0 0;">
+                            Cada porcentaje es la media de las puntuaciones de los ítems de esa competencia en esta sesión
+                            (cada respuesta vale 1 = bajo, 2 = medio, 3 = alto, respecto al máximo 3 por ítem).
+                            La prueba incluye ${Math.max(1, Math.round((data.maxScore || 30) / 3))} preguntas aleatorias del banco;
+                            si una competencia no apareció, se indica sin cifra.
+                        </p>
+                        <div class="competency-list">
+                            ${renderCompetencies(data.competencies)}
+                        </div>
+
+                        <div class="bottom-grid">
+                            <div class="bottom-box">
+                                <div class="box-head">Conclusión general</div>
+                                <div class="box-body">
+                                    ${buildConclusionHtml(data, p)}
+                                </div>
+                            </div>
+                            <div class="bottom-box">
+                                <div class="box-head">Recomendaciones</div>
+                                <div class="box-body">
+                                    ${buildRecommendationsHtml(recLines, recFallback)}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="toolbar">
+                            <a class="btn btn-outline" href="chatbot.html"><i class="fas fa-arrow-left"></i> Volver</a>
+                            <button type="button" class="btn btn-outline" onclick="window.print()">
+                                <i class="fas fa-print"></i> Imprimir / PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>`;
+        }
+    </script>
+</body>
+
+</html>

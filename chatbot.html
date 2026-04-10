@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Habilidades Blandas - AICROOM</title>
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDSF6XMHJ6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-LDSF6XMHJ6');
+        </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Estilos para la sección de análisis */
+        .analysis-section {
+            padding: 30px;
+            overflow-y: auto;
+            max-height: 600px;
+        }
+
+        .analysis-content {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .analysis-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .analysis-header h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .analysis-header p {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .score-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .analysis-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .analysis-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .analysis-card.strong {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        }
+
+        .analysis-card.weak {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .card-title {
+            font-size: 0.9em;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .card-content {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .analysis-section-item {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .section-content {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            line-height: 1.8;
+            color: #555;
+            font-size: 1em;
+        }
+
+        .recommendation-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #f39c12;
+        }
+
+        .recommendation-box .section-title {
+            color: #d35400;
+        }
+
+        .recommendation-box .section-content {
+            background: rgba(255, 255, 255, 0.7);
+            border-left: none;
+            color: #333;
+        }
+
+        .analysis-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .btn-informe {
+            background: #004a99;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1em;
+            box-shadow: 0 4px 14px rgba(0, 74, 153, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-informe:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 74, 153, 0.45);
+        }
+
+        .btn-home {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            font-size: 1em;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .analysis-section {
+                padding: 20px;
+            }
+
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .analysis-header h2 {
+                font-size: 1.5em;
+            }
+
+            .btn-home,
+            .btn-informe {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5885LF4W" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="chatbot-embedded">
+        <div class="chatbot-container">
+
+            <div class="chatbot-content">
+                <!-- Sección de bienvenida -->
+                <div class="welcome-section" id="welcomeSection">
+                    <h2>Examen psicológico.</h2>
+                    <p>¡Hola! Mi nombre es AICROOM, vamos a comenzar una prueba psicológica para tu
+                        proceso de reclutamiento. Responde con sinceridad recuerda que no hay respuestas
+                        incorrectas ni respuestas correctas.
+                        Cada respuesta refleja tu estilo personal.
+                        Responde con total naturalidad, cuando estes listo haz clic en comenzar. ¡Mucho
+                        éxito!
+                    </p>
+                    <button class="start-button" onclick="chatbotPage.startTest()">
+                        <i class="fas fa-play"></i> Comenzar Evaluación
+                    </button>
+                </div>
+
+                <!-- Sección de pregunta -->
+                <div class="question-section" id="questionSection">
+                    <div class="timer" id="timer" style="font-weight:bold;color:#667eea;margin-bottom:10px;"></div>
+                    <div class="question-text" id="questionText"></div>
+                    <div class="options-container" id="optionsContainer"></div>
+                </div>
+
+                <!-- Sección de completado -->
+                <div class="completion-section" id="completionSection">
+                    <h2>✅ ¡Gracias por completar la prueba!</h2>
+                    <p>Tus respuestas han sido registradas exitosamente.</p>
+                    <p>Nuestro equipo las revisará y las tendrá en cuenta para los procesos correspondientes.</p>
+                    <p>🔒 Recuerda que toda la información proporcionada será tratada con confidencialidad.</p>
+                    <p>¡Te deseamos muchos éxitos! 🌟</p>
+                    <button class="close-button" onclick="chatbotPage.closePage()">
+                        <i class="fas fa-times"></i> Cerrar
+                    </button>
+                </div>
+
+                <!-- Sección de análisis de IA -->
+                <div class="analysis-section" id="analysisSection" style="display: none;">
+                    <div class="analysis-content">
+                        <!-- El contenido se llenará dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Sección de login requerido -->
+                <div class="login-required" id="loginRequired">
+                    <h2>🔐 Acceso Requerido</h2>
+                    <p>Para realizar la evaluación de habilidades blandas, necesitas iniciar sesión.</p>
+                    <a href="login.html" class="login-button">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                    </a>
+                </div>
+
+                <!-- Sección de ya completado -->
+                <div class="already-completed" id="alreadyCompleted">
+                    <h2>📝 Evaluación Completada</h2>
+                    <p><strong>Ya has completado la evaluación de habilidades blandas.</strong></p>
+                    <p>Por política de la empresa, solo se permite un intento por usuario para garantizar la objetividad
+                        de los resultados.</p>
+                    <p>Tu evaluación ha sido registrada y será revisada por nuestro equipo.</p>
+                    <p>Gracias por tu participación.</p>
+                    <button class="close-button" onclick="chatbotPage.closePage()">
+                        <i class="fas fa-times"></i> Cerrar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Barra de progreso -->
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">0/20</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot embebido - JavaScript integrado -->
+    <script>
+        // Adaptación del chatbot para la página embebida
+        class ChatbotPage {
+            constructor() {
+                this.currentQuestion = 0;
+                this.answers = [];
+                this.totalScore = 0;
+                this.isCompleted = false;
+                this.userId = null;
+
+                // Definir las preguntas directamente aquí
+                this.allQuestions = [
+                    {
+                        competency: "Liderazgo",
+                        question: "Cuando un grupo necesita dirección para avanzar, ¿cómo sueles contribuir?",
+                        options: [
+                            { text: "Espero instrucciones claras antes de actuar.", score: 1 },
+                            { text: "Comparto sugerencias cuando es necesario.", score: 2 },
+                            { text: "Tomo iniciativa y ayudo a organizar las tareas del grupo.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Adaptabilidad",
+                        question: "Si recibes una tarea nueva que requiere habilidades desconocidas, ¿qué haces primero?",
+                        options: [
+                            { text: "Evito comenzar hasta sentirme seguro.", score: 1 },
+                            { text: "Busco referencias y ayuda para entender lo básico.", score: 2 },
+                            { text: "Investigo, practico y pido retroalimentación para aprender rápido.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Comunicación",
+                        question: "Cuando alguien cuestiona tu idea en una reunión, ¿cómo respondes?",
+                        options: [
+                            { text: "Evito discutir y dejo el tema atrás.", score: 1 },
+                            { text: "Aclaro mi punto para evitar malentendidos.", score: 2 },
+                            { text: "Defiendo mi postura con argumentos y apertura al diálogo.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Responsabilidad",
+                        question: "Si notas que el equipo se apresura y podría cometer un error importante, ¿qué haces?",
+                        options: [
+                            { text: "Sigo la decisión del equipo para no retrasar.", score: 1 },
+                            { text: "Menciono mi duda, pero dejo que el equipo decida.", score: 2 },
+                            { text: "Presento los riesgos y propongo revisar antes de avanzar.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Responsabilidad",
+                        question: "Cuando cometes un error que impacta un proyecto, ¿cómo actúas?",
+                        options: [
+                            { text: "Intento evitar discutirlo para no generar problemas.", score: 1 },
+                            { text: "Informo del error y ayudo en lo posible.", score: 2 },
+                            { text: "Asumo total responsabilidad y planteo acciones correctivas.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Liderazgo",
+                        question: "En una reunión con poca participación, ¿cómo contribuyes?",
+                        options: [
+                            { text: "Me mantengo en silencio esperando instrucciones.", score: 1 },
+                            { text: "Comparto alguna idea si el ambiente lo permite.", score: 2 },
+                            { text: "Propongo preguntas o dinámicas para estimular la participación.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Comunicación",
+                        question: "Cuando un cliente o usuario se comunica con tono tenso, ¿cómo manejas la situación?",
+                        options: [
+                            { text: "Respondo con el mismo nivel de tensión.", score: 1 },
+                            { text: "Intento mantener la calma, pero me pongo a la defensiva.", score: 2 },
+                            { text: "Mantengo la calma, escucho y busco comprender la causa.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Manejo del Estrés",
+                        question: "Cuando debes organizar varias tareas simultáneamente, ¿cómo gestionas tu tiempo?",
+                        options: [
+                            { text: "Trabajo en lo primero que me llama la atención.", score: 1 },
+                            { text: "Organizo parcialmente y ajusto sobre la marcha.", score: 2 },
+                            { text: "Prioritizo, planifico y asigno tiempos para cada actividad.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Trabajo en Equipo",
+                        question: "Si notas tensión o desacuerdo entre miembros del equipo, ¿qué acostumbras hacer?",
+                        options: [
+                            { text: "Me mantengo al margen para evitar problemas.", score: 1 },
+                            { text: "Intento mediar si veo espacio para ello.", score: 2 },
+                            { text: "Escucho ambas partes y promuevo un diálogo constructivo.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Responsabilidad",
+                        question: "Cuando te piden entregar algo con mucha prisa, comprometiendo calidad, ¿qué haces?",
+                        options: [
+                            { text: "Entrego rápido aunque no sea lo mejor posible.", score: 1 },
+                            { text: "Intento balancear velocidad y calidad.", score: 2 },
+                            { text: "Explico las limitaciones y propongo alternativas viables.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Adaptabilidad",
+                        question: "Cuando recibes una crítica que no esperabas, ¿cómo la manejas?",
+                        options: [
+                            { text: "Me molesta y me cuesta continuar.", score: 1 },
+                            { text: "Me incomoda, pero trato de reflexionar.", score: 2 },
+                            { text: "La analizo con apertura para mejorar mi desempeño.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Trabajo en Equipo",
+                        question: "Si tu equipo no completa su parte del trabajo, afectando tus tareas, ¿cómo reaccionas?",
+                        options: [
+                            { text: "Me molesto pero prefiero no decir nada.", score: 1 },
+                            { text: "Hago lo que falta para cumplir.", score: 2 },
+                            { text: "Converso con el equipo para corregir el rumbo juntos.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Manejo del Estrés",
+                        question: "En ambientes de alta presión o cambios frecuentes, ¿cómo respondes?",
+                        options: [
+                            { text: "Mi rendimiento disminuye notablemente.", score: 1 },
+                            { text: "Me adapto gradualmente.", score: 2 },
+                            { text: "Me ajusto rápido y busco soluciones prácticas.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Liderazgo",
+                        question: "Si debes delegar trabajo, ¿cómo lo haces?",
+                        options: [
+                            { text: "Prefiero hacerlo yo mismo para evitar errores.", score: 1 },
+                            { text: "Delego, pero reviso cada detalle.", score: 2 },
+                            { text: "Asigno tareas de forma clara y doy seguimiento oportuno.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Adaptabilidad",
+                        question: "Cuando recibes tareas repetitivas, ¿cómo reaccionas?",
+                        options: [
+                            { text: "Las hago sin motivación.", score: 1 },
+                            { text: "Busco alternar tareas cuando es posible.", score: 2 },
+                            { text: "Propongo mejoras o formas de hacerlas más eficientes.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Trabajo en Equipo",
+                        question: "Al trabajar con personas con estilos muy diferentes al tuyo, ¿cómo actúas?",
+                        options: [
+                            { text: "Evito interactuar demasiado.", score: 1 },
+                            { text: "Me adapto progresivamente.", score: 2 },
+                            { text: "Valoro la diversidad y la uso para enriquecer el trabajo.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Trabajo en Equipo",
+                        question: "Si un compañero atraviesa un momento personal difícil, ¿cómo sueles responder?",
+                        options: [
+                            { text: "Prefiero mantener distancia.", score: 1 },
+                            { text: "Le ofrezco apoyo si me lo pide.", score: 2 },
+                            { text: "Me acerco, escucho y me muestro disponible.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Adaptabilidad",
+                        question: "Cuando necesitas aprender una habilidad rápidamente, ¿qué haces?",
+                        options: [
+                            { text: "Me cuesta iniciar y lo pospongo.", score: 1 },
+                            { text: "Busco ayuda y practico cuando puedo.", score: 2 },
+                            { text: "Creo un plan de estudio y practico de manera intensiva.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Comunicación",
+                        question: "Si debes trabajar con alguien con quien tuviste conflictos previos, ¿cómo procedes?",
+                        options: [
+                            { text: "Limito al mínimo la interacción.", score: 1 },
+                            { text: "Manejo la relación con respeto y distancia.", score: 2 },
+                            { text: "Intento reconstruir la relación profesionalmente.", score: 3 }
+                        ]
+                    },
+                    {
+                        competency: "Adaptabilidad",
+                        question: "Cuando hay un cambio inesperado de última hora, ¿cómo reaccionas?",
+                        options: [
+                            { text: "Me frustro y me cuesta ajustarme.", score: 1 },
+                            { text: "Me adapto aunque no me agrade.", score: 2 },
+                            { text: "Reorganizo mis planes rápidamente y sigo adelante.", score: 3 }
+                        ]
+                    }
+                ];
+
+                // Seleccionar 10 preguntas aleatorias para esta sesión
+                this.questions = this.shuffleArray([...this.allQuestions]).slice(0, 10);
+
+                this.init();
+            }
+
+            async init() {
+                await this.checkUserStatus();
+                this.showWelcomeSection();
+            }
+
+            async checkUserStatus() {
+                try {
+                    const response = await fetch('get_user_status.php');
+                    const data = await response.json();
+
+                    if (data.logged_in) {
+                        this.userId = data.user_id;
+                        this.userEmail = data.user_email;
+                        this.userName = data.user_name;
+
+                        // Verificar si ya completó el test
+                        const testResponse = await fetch('check_test_completion.php');
+                        const testData = await testResponse.json();
+
+                        if (testData.completed) {
+                            this.showAlreadyCompleted();
+                        }
+                    } else {
+                        this.showLoginRequired();
+                    }
+                } catch (error) {
+                    console.error('Error verificando estado del usuario:', error);
+                    this.showLoginRequired();
+                }
+            }
+
+            showWelcomeSection() {
+                this.hideAllSections();
+                document.getElementById('welcomeSection').style.display = 'block';
+                document.getElementById('progressSection').style.display = 'none';
+            }
+
+            showLoginRequired() {
+                this.hideAllSections();
+                document.getElementById('loginRequired').style.display = 'block';
+            }
+
+            showAlreadyCompleted() {
+                this.hideAllSections();
+                document.getElementById('alreadyCompleted').style.display = 'block';
+            }
+
+            hideAllSections() {
+                document.getElementById('welcomeSection').style.display = 'none';
+                document.getElementById('questionSection').style.display = 'none';
+                document.getElementById('completionSection').style.display = 'none';
+                document.getElementById('analysisSection').style.display = 'none';
+                document.getElementById('loginRequired').style.display = 'none';
+                document.getElementById('alreadyCompleted').style.display = 'none';
+            }
+
+            // Parsear el análisis de la IA
+            parseAnalysis(analysisText) {
+                const result = {
+                    strongSkill: '',
+                    weakSkill: '',
+                    analysis: '',
+                    recommendation: ''
+                };
+
+                if (!analysisText) {
+                    return result;
+                }
+
+                // Buscar "Habilidad más fuerte:"
+                const strongMatch = analysisText.match(/habilidad\s+más\s+fuerte[:\s]+([^\n]+)/i);
+                if (strongMatch) {
+                    result.strongSkill = strongMatch[1].trim();
+                }
+
+                // Buscar "Habilidad más débil:" o "Habilidad a mejorar:"
+                const weakMatch = analysisText.match(/habilidad\s+más\s+débil[:\s]+([^\n]+)/i) ||
+                    analysisText.match(/habilidad\s+a\s+mejorar[:\s]+([^\n]+)/i);
+                if (weakMatch) {
+                    result.weakSkill = weakMatch[1].trim();
+                }
+
+                // Buscar "Análisis:"
+                const analysisMatch = analysisText.match(/análisis[:\s]+([^\n]+(?:\n(?!recomendación)[^\n]+)*)/i);
+                if (analysisMatch) {
+                    result.analysis = analysisMatch[1].trim();
+                }
+
+                // Buscar "Recomendación:"
+                const recommendationMatch = analysisText.match(/recomendación[:\s]+(.+)/is);
+                if (recommendationMatch) {
+                    result.recommendation = recommendationMatch[1].trim();
+                }
+
+                return result;
+            }
+
+            escapeHtml(str) {
+                if (str == null || str === '') return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;');
+            }
+
+            /**
+             * Por competencia: media de (puntuación/3) por ítem respondido (1–3).
+             * Solo cuenta respuestas con score > 0. Sin ítems en la sesión = no medido (sin % ficticio).
+             */
+            computeCompetencyBreakdown(answers) {
+                const ORDER = ['Liderazgo', 'Trabajo en Equipo', 'Comunicación', 'Adaptabilidad', 'Responsabilidad', 'Manejo del Estrés'];
+                const sums = {};
+                const counts = {};
+                ORDER.forEach((c) => {
+                    sums[c] = 0;
+                    counts[c] = 0;
+                });
+                answers.forEach((a) => {
+                    if (!a.competency || a.score <= 0) return;
+                    if (sums[a.competency] === undefined) return;
+                    sums[a.competency] += a.score;
+                    counts[a.competency] += 1;
+                });
+                return ORDER.map((name) => {
+                    const n = counts[name];
+                    if (n === 0) {
+                        return {
+                            name,
+                            measured: false,
+                            percent: null,
+                            level: 'Sin ítems en esta sesión',
+                            barTone: 'neutral',
+                            itemsCount: 0
+                        };
+                    }
+                    const raw = sums[name] / (n * 3);
+                    const pct = Math.min(100, Math.max(0, Math.round(raw * 100)));
+                    let level;
+                    let barTone;
+                    if (pct <= 33) {
+                        level = 'Bajo';
+                        barTone = 'orange';
+                    } else if (pct <= 49) {
+                        level = 'Medio-Bajo';
+                        barTone = 'orange';
+                    } else if (pct <= 66) {
+                        level = 'Medio';
+                        barTone = 'blue';
+                    } else if (pct <= 83) {
+                        level = 'Medio-Alto';
+                        barTone = 'green';
+                    } else {
+                        level = 'Alta';
+                        barTone = 'red';
+                    }
+                    return {
+                        name,
+                        measured: true,
+                        percent: pct,
+                        level,
+                        barTone,
+                        itemsCount: n
+                    };
+                });
+            }
+
+            splitRecommendationLines(text) {
+                if (!text) return [];
+                const t = text.trim();
+                const numbered = t.match(/\d+[\.\)]\s*[^\n]+/g);
+                if (numbered && numbered.length >= 2) {
+                    return numbered.map((x) => x.replace(/^\d+[\.\)]\s*/, '').trim());
+                }
+                return t.split(/\n+/)
+                    .map((l) => l.replace(/^[-•*]\s*/, '').trim())
+                    .filter(Boolean);
+            }
+
+            savePsychReportPayload(analysisText, parsed, totalScore) {
+                const competencies = this.computeCompetencyBreakdown(this.answers);
+                const strengths = [];
+                if (parsed.strongSkill) {
+                    strengths.push(parsed.strongSkill.replace(/\s*\([^)]*\)\s*$/, '').trim());
+                }
+                competencies
+                    .filter((c) => c.measured !== false && typeof c.percent === 'number' && c.percent >= 67)
+                    .sort((a, b) => b.percent - a.percent)
+                    .forEach((c) => {
+                        const dup = strengths.some(
+                            (s) =>
+                                s.toLowerCase().includes(c.name.toLowerCase()) ||
+                                c.name.toLowerCase().includes(s.toLowerCase())
+                        );
+                        if (!dup) strengths.push(c.name);
+                    });
+                const opportunities = [];
+                if (parsed.weakSkill) {
+                    opportunities.push(parsed.weakSkill.replace(/\s*\([^)]*\)\s*$/, '').trim());
+                }
+                competencies
+                    .filter((c) => c.measured !== false && typeof c.percent === 'number' && c.percent < 55)
+                    .sort((a, b) => a.percent - b.percent)
+                    .forEach((c) => {
+                        const dup = opportunities.some((o) => o.toLowerCase().includes(c.name.toLowerCase()));
+                        if (!dup) opportunities.push(c.name);
+                    });
+                let conclusionShort = 'Perfil con fortalezas identificadas y áreas de desarrollo.';
+                if (parsed.analysis) {
+                    const t = parsed.analysis.replace(/\s+/g, ' ').trim();
+                    conclusionShort = t.length > 280 ? t.slice(0, 277).trim() + '…' : t;
+                }
+                const payload = {
+                    userName: this.userName || 'Candidato',
+                    userEmail: this.userEmail || '',
+                    date: new Date().toISOString(),
+                    dateLocale: new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
+                    totalScore,
+                    maxScore: this.questions.length * 3,
+                    analysisRaw: analysisText,
+                    parsed,
+                    competencies,
+                    strengths: strengths.slice(0, 5),
+                    opportunities: opportunities.length ? opportunities.slice(0, 5) : [parsed.weakSkill || 'Desarrollo continuo de competencias'],
+                    conclusionShort,
+                    recommendationLines: this.splitRecommendationLines(parsed.recommendation)
+                };
+                try {
+                    sessionStorage.setItem('aicroom_psych_report', JSON.stringify(payload));
+                } catch (e) {
+                    console.warn('No se pudo guardar el informe en sessionStorage', e);
+                }
+            }
+
+            goToInformeCompleto() {
+                window.location.href = 'informe_psicometrico.html';
+            }
+
+            // Mostrar sección de análisis automáticamente
+            showAnalysisSection(analysisText, totalScore) {
+                // Ocultar todas las secciones
+                this.hideAllSections();
+
+                // Parsear el análisis
+                const parsed = this.parseAnalysis(analysisText);
+                this.savePsychReportPayload(analysisText, parsed, totalScore);
+
+                const esc = (s) => this.escapeHtml(s);
+                const bodyHtml = esc(parsed.analysis || analysisText).replace(/\n/g, '<br>');
+                const recHtml = esc(parsed.recommendation || 'Continúa trabajando en tu desarrollo personal y profesional.').replace(/\n/g, '<br>');
+
+                // Obtener el contenedor de análisis
+                const analysisSection = document.getElementById('analysisSection');
+                const analysisContent = analysisSection.querySelector('.analysis-content');
+
+                // Construir el HTML del análisis
+                analysisContent.innerHTML = `
+                    <div class="analysis-header">
+                        <h2><i class="fas fa-brain"></i> Análisis de Habilidades Blandas</h2>
+                        <p>Resultado de tu evaluación personalizada</p>
+                    </div>
+                    
+                    <div class="analysis-grid">
+                        <div class="analysis-card strong">
+                            <div class="card-icon"><i class="fas fa-star"></i></div>
+                            <div class="card-title">Habilidad Más Fuerte</div>
+                            <div class="card-content">${esc(parsed.strongSkill || 'No especificada')}</div>
+                        </div>
+                        
+                        <div class="analysis-card weak">
+                            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="card-title">Habilidad a Mejorar</div>
+                            <div class="card-content">${esc(parsed.weakSkill || 'No especificada')}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-section-item">
+                        <div class="section-title">
+                            <i class="fas fa-clipboard-list"></i> Análisis Profesional
+                        </div>
+                        <div class="section-content">
+                            ${bodyHtml}
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-section-item recommendation-box">
+                        <div class="section-title">
+                            <i class="fas fa-lightbulb"></i> Recomendación
+                        </div>
+                        <div class="section-content">
+                            ${recHtml}
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-actions">
+                        <button type="button" class="btn-informe" onclick="chatbotPage.goToInformeCompleto()">
+                            <i class="fas fa-file-alt"></i> Ver informe psicométrico completo
+                        </button>
+                        <button type="button" class="btn-home" onclick="chatbotPage.closePage()">
+                            <i class="fas fa-times"></i> Cerrar
+                        </button>
+                    </div>
+                `;
+
+                // Mostrar la sección de análisis
+                analysisSection.style.display = 'block';
+                document.getElementById('progressSection').style.display = 'none';
+
+                // Scroll suave hacia arriba
+                analysisSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            startTest() {
+                this.hideAllSections();
+                document.getElementById('questionSection').style.display = 'block';
+                document.getElementById('progressSection').style.display = 'block';
+                this.showQuestion();
+            }
+
+            showQuestion() {
+                if (this.currentQuestion >= this.questions.length) {
+                    this.completeTest();
+                    return;
+                }
+                // Limpiar cualquier temporizador anterior
+                if (this.timerInterval) clearInterval(this.timerInterval);
+                this.timeLeft = 35;
+                document.getElementById('timer').textContent = `Tiempo restante: ${this.timeLeft}s`;
+                this.timerInterval = setInterval(() => {
+                    this.timeLeft--;
+                    document.getElementById('timer').textContent = `Tiempo restante: ${this.timeLeft}s`;
+                    if (this.timeLeft <= 0) {
+                        clearInterval(this.timerInterval);
+                        this.selectOption({ text: 'Sin respuesta', score: 0, timeout: true });
+                    }
+                }, 1000);
+
+                const question = this.questions[this.currentQuestion];
+                document.getElementById('questionText').textContent = question.question;
+
+                // Randomizar las opciones
+                const shuffledOptions = this.shuffleArray([...question.options]);
+
+                const optionsContainer = document.getElementById('optionsContainer');
+                optionsContainer.innerHTML = '';
+
+                shuffledOptions.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    button.className = 'option-button';
+                    button.textContent = option.text;
+                    button.onclick = () => this.selectOption(option);
+                    optionsContainer.appendChild(button);
+                });
+
+                // Actualizar progreso
+                this.updateProgress();
+            }
+
+            shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            selectOption(option) {
+                if (this.timerInterval) clearInterval(this.timerInterval);
+                // Guardar respuesta
+                this.answers.push({
+                    question: this.questions[this.currentQuestion].question,
+                    answer: option.text,
+                    score: option.score,
+                    competency: this.questions[this.currentQuestion].competency || ''
+                });
+
+                this.totalScore += option.score;
+                this.currentQuestion++;
+
+                // Mostrar siguiente pregunta
+                setTimeout(() => {
+                    this.showQuestion();
+                }, 300);
+            }
+
+            updateProgress() {
+                const progress = (this.currentQuestion / this.questions.length) * 100;
+                document.getElementById('progressFill').style.width = progress + '%';
+                document.getElementById('progressText').textContent = `${this.currentQuestion}/${this.questions.length}`;
+            }
+
+            async completeTest() {
+                this.isCompleted = true;
+
+                // Construir el mismo prompt que usa save_test_results.php
+                const prompt = `
+Eres un psicólogo organizacional y analista psicométrico experto en competencias blandas (soft skills).
+Interpreta las respuestas del cuestionario y redacta un informe profundo, equilibrado y accionable. No inventes conductas ni resultados que no se desprendan claramente de las respuestas.
+
+Escala del instrumento (solo para tu interpretación interna):
+1 = bajo · 2 = medio · 3 = alto
+
+Respuestas del usuario (JSON):
+${JSON.stringify(this.answers, null, 2)}
+
+Puntaje total interno (no lo cites ni menciones en el texto hacia la persona): ${this.totalScore}
+
+Instrucciones de salida (español, texto plano):
+
+1) Identifica la competencia blanda más sólida y la que requiere mayor desarrollo según el patrón de respuestas (no solo una pregunta aislada).
+
+2) En "Análisis:" escribe un bloque narrativo amplio (aprox. 8–14 líneas o 3–4 párrafos cortos) que integre obligatoriamente:
+   - Síntesis del perfil: tendencias generales y coherencia entre respuestas.
+   - Matices: fortalezas secundarias, posibles tensiones o contradicciones leves entre ítems.
+   - Implicaciones prácticas en contexto laboral o académico (ideas concretas, sin jerga innecesaria).
+   - Tono profesional, empático y claro.
+
+3) En "Recomendación:" ofrece un mini-plan con 2–4 acciones concretas y realizables para fortalecer la habilidad más débil (puedes sugerir plazos aproximados: corto/medio plazo). Evita frases genéricas tipo "sé más positivo".
+
+Formato exacto (una etiqueta por bloque, sin JSON ni bloques de código):
+
+Habilidad más fuerte: [nombre breve de la competencia; opcionalmente entre paréntesis una pista de cómo se reflejó en las respuestas]
+Habilidad más débil: [nombre breve de la competencia a desarrollar]
+Análisis: [texto completo según el punto 2]
+Recomendación: [texto según el punto 3]
+
+Restricciones: NO devuelvas JSON. NO menciones el puntaje numérico ni el número de ítems acertados. Basa todo en el contenido de las respuestas anteriores.
+`;
+
+                try {
+                    const response = await fetch('ai_analysis.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ prompt })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.text) {
+                        // Mostrar automáticamente la sección de análisis con el texto generado por la IA
+                        this.showAnalysisSection(data.text, this.totalScore);
+                    } else {
+                        // Si no hay texto, mostrar mensaje de completado normal
+                        this.showCompletionSection();
+                    }
+                } catch (error) {
+                    console.error('Error obteniendo análisis de IA:', error);
+                    this.showCompletionSection();
+                }
+            }
+
+            showCompletionSection() {
+                this.hideAllSections();
+                document.getElementById('completionSection').style.display = 'block';
+                document.getElementById('progressSection').style.display = 'none';
+            }
+
+            closePage() {
+                // Si está embebido en iframe dentro de la burbuja, pedir al padre que cierre
+                if (window.parent && window.parent !== window && window.parent.bubbleChatbotLocal) {
+                    try {
+                        window.parent.bubbleChatbotLocal.toggleChatbot();
+                        return;
+                    } catch (e) {
+                        console.error('No se pudo cerrar el iframe desde el padre:', e);
+                    }
+                }
+
+                // Si no está en iframe (acceso directo), solo ocultar secciones y volver al inicio visual del chatbot
+                this.hideAllSections();
+                document.getElementById('welcomeSection').style.display = 'block';
+                document.getElementById('progressSection').style.display = 'none';
+            }
+        }
+
+        // Inicializar la página del chatbot
+        let chatbotPage;
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                chatbotPage = new ChatbotPage();
+            });
+        } else {
+            chatbotPage = new ChatbotPage();
+        }
+    </script>
+</body>
+
+</html>

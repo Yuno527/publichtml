@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre nosotros - IA para Selección de Personal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDSF6XMHJ6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-LDSF6XMHJ6');
+        </script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5885LF4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.jpeg" alt="Logo AICROOM" style="height: 40px; margin-right: 10px;">
+                    AICROOM
+                </a>
+                
+                <!-- Menú desktop -->
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="empresa.html" class="nav-link active">Sobre nosotros</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li class="nav-item admin-only" id="results-desktop"><a href="resultados.php" class="nav-link">Resultados</a></li>
+                </ul>
+                
+                <!-- Menú usuario desktop -->
+                <div class="user-menu">
+                    <span class="user-name">EMA (usuario)</span>
+                    <button class="logout-btn" onclick="window.location.href='logout.php'">Cerrar sesión</button>
+                </div>
+                
+                <!-- Botón hamburguesa -->
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <!-- Menú móvil -->
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="mobile-nav-menu">
+                    <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Inicio</a></li>
+                    <li class="mobile-nav-item"><a href="empresa.html" class="mobile-nav-link active">Sobre nosotros</a></li>
+                    <li class="mobile-nav-item"><a href="contacto.html" class="mobile-nav-link">Contacto</a></li>
+                    <li class="mobile-nav-item admin-only" id="results-mobile"><a href="resultados.php" class="mobile-nav-link">Resultados</a></li>
+                </ul>
+                <div class="mobile-user-section">
+                    <div class="mobile-user-name">EMA (usuario)</div>
+                    <button class="mobile-logout-btn" onclick="window.location.href='logout.php'">Cerrar sesión</button>
+                </div>
+            </div>
+            
+            <!-- Overlay para cerrar menú -->
+            <div class="overlay" id="overlay"></div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Sobre nosotros</h1>
+            <p class="hero-subtitle">Innovando en procesos de selección con tecnología de vanguardia</p>
+        </div>
+    </section>
+
+    <!-- Historia Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-building"></i> Nuestra Historia</h2>
+                <p>Conoce cómo nació AICROOM y nuestra visión para transformar la selección de personal</p>
+            </div>
+            
+            <div class="history-content">
+                <div class="history-text">
+                    <p>AICROOM nació de una idea sencilla pero poderosa: mejorar los procesos de selección de personal usando inteligencia artificial para detectar lo que muchas veces no se ve en un currículo: las habilidades blandas.</p>
+                    
+                    <p>Todo comenzó cuando uno de nosotros, al enfrentarse a múltiples entrevistas técnicas, identificó un patrón que se repetía con frecuencia: candidatos con un alto nivel de conocimiento y habilidades técnicas sobresalientes no lograban integrarse plenamente en los equipos. La razón no estaba en su capacidad profesional, sino en la ausencia de competencias clave como la empatía, el liderazgo y la comunicación efectiva. Esta situación evidenció una brecha importante en los procesos tradicionales de selección, donde lo técnico suele pesar más que lo humano. A partir de esta observación, surgió una pregunta fundamental:</p>
+                    
+                    <div class="highlight-question">
+                        <p><strong>¿Y si pudiéramos simular entrevistas que detecten esas habilidades de forma automática?</strong></p>
+                    </div>
+                    
+                    <p>Con esta idea en mente, unimos fuerzas: un equipo de emprendedores con pasión por la tecnología y una visión compartida de transformar la manera en que se construyen los equipos humanos en el mundo digital.</p>
+                    
+                    <p>Hoy, AICROOM es un proyecto independiente que ofrece una herramienta de evaluación sencilla, visual y sin complicaciones, ideal para cualquier empresa que quiera elegir mejor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section class="mission-vision-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestra Propuesta de Valor</h2>
+                <p>Los pilares que guían nuestro trabajo</p>
+            </div>
+            
+            <div class="mission-vision-grid">
+                <div class="mission-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Misión</h3>
+                    <p>Desarrollar una Inteligencia Artificial altamente capas de aplicar pruebas
+                        psicométricas para mejorar la taza de talento que ingresa a la corporación. Además
+                        de potenciar el talento contratado por medio de capacitaciones cuidadosamente
+                        seleccionadas en base a las necesidades.</p>
+                </div>
+                
+                <div class="vision-card">
+                    <div class="card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Visión</h3>
+                    <p>Mejorar la productividad, la eficiencia y el crecimiento dentro de las empresas por
+                        medio del talento humano con las nuevas tecnologías de ultima generación. .</p>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    <!-- Equipo Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2><i class="fas fa-users"></i> Conoce al equipo</h2>
+                <p>El talento humano detrás de la tecnología</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="team-aicroom/Geovani.jpg" alt="Geovani Romero">
+                    </div>
+                    <div class="team-info">
+                        <h3>Geovani Romero</h3>
+                        <p class="team-role">CEO & Fundador</p>
+                        <p class="team-description">Lider de proyecto.</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="team-aicroom/Emma.jpg" alt="Emma Padilla">
+                    </div>
+                    <div class="team-info">
+                        <h3>Emma Padilla</h3>
+                        <p class="team-role">Desarrolladora Senior</p>
+                        <p class="team-description">Ingeniera en sistemas especializada en desarrollo de software y arquitectura de soluciones.</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="team-aicroom/Breiner.jpg" alt="Breiner Duran">
+                    </div>
+                    <div class="team-info">
+                        <h3>Breiner Duran</h3>
+                        <p class="team-role">Desarrollador Full Stack</p>
+                        <p class="team-description">Ingeniero en sistemas con experiencia en desarrollo full-stack y aplicaciones de IA.</p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="team-aicroom/bert.jpg" alt="Bert">
+                    </div>
+                    <div class="team-info">
+                        <h3>Bert</h3>
+                        <p class="team-role">Mentor & Asesor</p>
+                        <p class="team-description">Multiempresario con amplia experiencia en desarrollo de negocios y estrategia empresarial.</p>
+                    </div>
+                </div>
+<!-- 
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="team-aicroom/Cesar.jpg" alt="Cesar Islas">
+                    </div>
+                    <div class="team-info">
+                        <h3>Cesar Islas</h3>
+                        <p class="team-role">Mentor & Director</p>
+                        <p class="team-description">Director de CETIEM, aporta experiencia en gestión y desarrollo de proyectos tecnológicos.</p>
+                    </div>
+                </div>
+-->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <a href="index.html" class="logo-container">
+                    <img src="images/logo.jpeg" alt="Logo AICROOM" class="logo">
+                    <span class="logo-text">AICROOM</span>
+                </a>
+                <p id="parra-footer">Revolucionando los procesos de selección con Inteligencia Artificial.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/16pNKXdseF/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Enlaces rápidos</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="como-funciona.html">Cómo funciona</a></li>
+                    <li><a href="empresa.html">Sobre nosotros</a></li>
+                    <li><a href="contacto.html">Contáctanos</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Contacto</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> geovaniromero2020@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> 5647594918</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p style="font-weight:bold;">&copy; 2025 AICROOM. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <script src="main.js"></script>
+    <script src="admin_nav.js"></script>
+    <script src="nav-mobile.js"></script>
+    <script src="user-menu.js"></script>
+    <script src="contact_final.js"></script>
+     <!-- Versión local: burbuja que abre chatbot.html en un iframe -->
+    <script src="bubble_chatbot_local.js"></script>
+    <script>
+        // Verificación adicional después de cargar todos los scripts
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                console.log('=== VERIFICACIÓN FINAL DEL CHATBOT ===');
+                const btn = document.getElementById('bubble-chatbot-button');
+                if (!btn) {
+                  console.error('❌ El botón del chatbot local NO se creó');
+                } else {
+                  console.log('✅ El botón del chatbot local existe');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDSF6XMHJ6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-LDSF6XMHJ6');
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Roles - AICROOM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .test-controls {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .test-controls button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .admin-btn {
+            background: #28a745;
+            color: white;
+        }
+        .user-btn {
+            background: #007bff;
+            color: white;
+        }
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+        }
+        .status {
+            margin: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .admin-status {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .user-status {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5885LF4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <div class="test-controls">
+        <h2>🧪 Prueba de Control de Roles</h2>
+        <p>Usa estos botones para simular diferentes tipos de usuario:</p>
+        <button class="admin-btn" onclick="loginAsAdmin()">👑 Simular Admin</button>
+        <button class="user-btn" onclick="loginAsUser()">👤 Simular Usuario Normal</button>
+        <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+        <div id="status" class="status user-status">Estado: Usuario Normal</div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.jpeg" alt="Logo AICROOM" style="height: 40px; margin-right: 10px;">
+                    AICROOM<span>IA</span>
+                </a>
+                
+                <!-- Menú desktop -->
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="como-funciona.html" class="nav-link">Cómo funciona</a></li>
+                    <li class="nav-item"><a href="empresa.html" class="nav-link">Sobre nosotros</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li class="nav-item admin-only" id="results-desktop"><a href="resultados.html" class="nav-link">Resultados</a></li>
+                    <li class="nav-item"><a href="chatbot.html" class="nav-link">Evaluación IA</a></li>
+                </ul>
+                
+                <!-- Menú usuario desktop -->
+                <div class="user-menu">
+                    <span class="user-name" id="user-display">Usuario Normal</span>
+                    <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
+                </div>
+                
+                <!-- Botón hamburguesa -->
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <!-- Menú móvil -->
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="mobile-nav-menu">
+                    <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Inicio</a></li>
+                    <li class="mobile-nav-item"><a href="como-funciona.html" class="mobile-nav-link">Cómo funciona</a></li>
+                    <li class="mobile-nav-item"><a href="empresa.html" class="mobile-nav-link">Sobre nosotros</a></li>
+                    <li class="mobile-nav-item"><a href="contacto.html" class="mobile-nav-link">Contacto</a></li>
+                    <li class="mobile-nav-item admin-only" id="results-mobile"><a href="resultados.html" class="mobile-nav-link">Resultados</a></li>
+                    <li class="mobile-nav-item"><a href="chatbot.html" class="mobile-nav-link">Evaluación IA</a></li>
+                </ul>
+                <div class="mobile-user-section">
+                    <div class="mobile-user-name" id="mobile-user-display">Usuario Normal</div>
+                    <button class="mobile-logout-btn" onclick="logout()">Cerrar sesión</button>
+                </div>
+            </div>
+            
+            <!-- Overlay para cerrar menú -->
+            <div class="overlay" id="overlay"></div>
+        </nav>
+    </header>
+
+    <main style="padding: 40px 20px; text-align: center;">
+        <h1>Prueba de Control de Roles</h1>
+        <p>Esta página te permite probar cómo funciona el control de acceso por roles.</p>
+        
+        <h2>Instrucciones:</h2>
+        <ol style="text-align: left; max-width: 600px; margin: 0 auto;">
+            <li><strong>Como Usuario Normal:</strong> La opción "Resultados" estará oculta</li>
+            <li><strong>Como Administrador:</strong> La opción "Resultados" será visible</li>
+            <li>Usa los botones de arriba para cambiar entre roles</li>
+            <li>Observa cómo cambia la navegación en desktop y móvil</li>
+        </ol>
+        
+        <h2>Estado actual:</h2>
+        <div id="current-status" style="margin: 20px 0; padding: 15px; background: #e9ecef; border-radius: 5px;">
+            Cargando...
+        </div>
+    </main>
+
+    <script src="nav-mobile.js"></script>
+    <script src="role-checker.js"></script>
+    
+    <script>
+        // Actualizar la interfaz cuando cambie el rol
+        function updateUI() {
+            const role = getCurrentRole();
+            const statusDiv = document.getElementById('status');
+            const currentStatusDiv = document.getElementById('current-status');
+            const userDisplay = document.getElementById('user-display');
+            const mobileUserDisplay = document.getElementById('mobile-user-display');
+            
+            if (role === 'admin') {
+                statusDiv.textContent = 'Estado: Administrador';
+                statusDiv.className = 'status admin-status';
+                currentStatusDiv.innerHTML = '👑 <strong>Administrador</strong> - Puede ver todas las opciones incluyendo "Resultados"';
+                userDisplay.textContent = 'Admin (administrador)';
+                mobileUserDisplay.textContent = 'Admin (administrador)';
+            } else {
+                statusDiv.textContent = 'Estado: Usuario Normal';
+                statusDiv.className = 'status user-status';
+                currentStatusDiv.innerHTML = '👤 <strong>Usuario Normal</strong> - No puede ver la opción "Resultados"';
+                userDisplay.textContent = 'Usuario Normal';
+                mobileUserDisplay.textContent = 'Usuario Normal';
+            }
+        }
+        
+        // Actualizar la UI al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            updateUI();
+        });
+        
+        // Sobrescribir las funciones para actualizar la UI
+        const originalLoginAsAdmin = window.loginAsAdmin;
+        const originalLoginAsUser = window.loginAsUser;
+        const originalLogout = window.logout;
+        
+        window.loginAsAdmin = function() {
+            originalLoginAsAdmin();
+            updateUI();
+        };
+        
+        window.loginAsUser = function() {
+            originalLoginAsUser();
+            updateUI();
+        };
+        
+        window.logout = function() {
+            originalLogout();
+            updateUI();
+        };
+    </script>
+</body>
+</html>

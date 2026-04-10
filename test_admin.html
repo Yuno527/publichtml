@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Admin - AICROOM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDSF6XMHJ6"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-LDSF6XMHJ6');
+        </script>
+    <style>
+        .test-controls {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .test-controls button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .user-btn {
+            background: #007bff;
+            color: white;
+        }
+        .admin-btn {
+            background: #28a745;
+            color: white;
+        }
+        .status {
+            margin: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .user-status {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .admin-status {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5885LF4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <div class="test-controls">
+        <h2>🧪 Prueba de Administrador</h2>
+        <p>Prueba el control de roles:</p>
+        <button class="user-btn" onclick="setUserRole('user')">👤 Usuario Normal</button>
+        <button class="admin-btn" onclick="setUserRole('admin')">👑 Administrador</button>
+        <div id="status" class="status user-status">Estado: Usuario Normal</div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.jpeg" alt="Logo AICROOM" style="height: 40px; margin-right: 10px;">
+                    AICROOM<span>IA</span>
+                </a>
+                
+                <!-- Menú desktop -->
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="como-funciona.html" class="nav-link">Cómo funciona</a></li>
+                    <li class="nav-item"><a href="empresa.html" class="nav-link">Sobre nosotros</a></li>
+                    <li class="nav-item"><a href="contacto.html" class="nav-link">Contacto</a></li>
+                    <li class="nav-item admin-only" id="results-desktop"><a href="resultados.html" class="nav-link">Resultados</a></li>
+                    <li class="nav-item"><a href="chatbot.html" class="nav-link">Evaluación IA</a></li>
+                </ul>
+                
+                <!-- Menú usuario desktop -->
+                <div class="user-menu">
+                    <span class="user-name">Usuario</span>
+                </div>
+                
+                <!-- Botón hamburguesa -->
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <!-- Menú móvil -->
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="mobile-nav-menu">
+                    <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link">Inicio</a></li>
+                    <li class="mobile-nav-item"><a href="como-funciona.html" class="mobile-nav-link">Cómo funciona</a></li>
+                    <li class="mobile-nav-item"><a href="empresa.html" class="mobile-nav-link">Sobre nosotros</a></li>
+                    <li class="mobile-nav-item"><a href="contacto.html" class="mobile-nav-link">Contacto</a></li>
+                    <li class="mobile-nav-item admin-only" id="results-mobile"><a href="resultados.html" class="mobile-nav-link">Resultados</a></li>
+                    <li class="mobile-nav-item"><a href="chatbot.html" class="mobile-nav-link">Evaluación IA</a></li>
+                </ul>
+                <div class="mobile-user-section">
+                    <div class="mobile-user-name">Usuario</div>
+                </div>
+            </div>
+            
+            <!-- Overlay para cerrar menú -->
+            <div class="overlay" id="overlay"></div>
+        </nav>
+    </header>
+
+    <main style="padding: 40px 20px; text-align: center;">
+        <h1>Prueba de Control de Roles</h1>
+        <p>Esta página te permite probar si "Resultados" aparece para administradores.</p>
+        
+        <h2>Instrucciones:</h2>
+        <ol style="text-align: left; max-width: 600px; margin: 0 auto;">
+            <li><strong>Haz clic en "Usuario Normal"</strong> - "Resultados" debe ocultarse</li>
+            <li><strong>Haz clic en "Administrador"</strong> - "Resultados" debe aparecer</li>
+            <li><strong>Verifica en desktop</strong> - Mira la navegación superior</li>
+            <li><strong>Verifica en móvil</strong> - Abre el menú hamburguesa</li>
+            <li><strong>Revisa la consola</strong> - F12 para ver los logs de debug</li>
+            <li><strong>Si no funciona</strong> - Verifica que localStorage tenga 'userRole': 'admin'</li>
+        </ol>
+        
+        <h2>Estado actual:</h2>
+        <div id="current-status" style="margin: 20px 0; padding: 15px; background: #e9ecef; border-radius: 5px;">
+            Cargando...
+        </div>
+        
+        <h2>Información de Debug:</h2>
+        <div id="admin-elements" style="margin: 20px 0; padding: 15px; background: #e9ecef; border-radius: 5px;">
+            Cargando...
+        </div>
+        <div id="debug-info" style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 5px; font-family: monospace; font-size: 0.9rem;">
+            Cargando...
+        </div>
+    </main>
+
+    <script src="nav-mobile.js"></script>
+    <script src="user-menu.js"></script>
+    
+    <script>
+        // Actualizar la interfaz
+        function updateUI() {
+            const userRole = getCurrentRole();
+            const isUserAdmin = isAdmin();
+            const statusDiv = document.getElementById('status');
+            const currentStatusDiv = document.getElementById('current-status');
+            const adminElementsDiv = document.getElementById('admin-elements');
+            const debugInfoDiv = document.getElementById('debug-info');
+            
+            // Actualizar estado
+            if (userRole === 'admin' || isUserAdmin) {
+                statusDiv.textContent = 'Estado: Administrador';
+                statusDiv.className = 'status admin-status';
+                currentStatusDiv.innerHTML = '👑 <strong>Rol:</strong> Administrador - Debe ver "Resultados"';
+            } else {
+                statusDiv.textContent = 'Estado: Usuario Normal';
+                statusDiv.className = 'status user-status';
+                currentStatusDiv.innerHTML = '👤 <strong>Rol:</strong> Usuario Normal - NO debe ver "Resultados"';
+            }
+            
+            // Contar elementos admin
+            const adminElements = document.querySelectorAll('.admin-only');
+            adminElementsDiv.innerHTML = `📊 <strong>Elementos admin encontrados:</strong> ${adminElements.length}`;
+            
+            // Información de debug
+            const debugInfo = `
+                <strong>Información de Debug:</strong><br>
+                • localStorage.userRole: "${localStorage.getItem('userRole')}"<br>
+                • localStorage.userName: "${localStorage.getItem('userName')}"<br>
+                • getCurrentRole(): "${getCurrentRole()}"<br>
+                • isAdmin(): ${isUserAdmin}<br>
+                • Elementos .admin-only: ${adminElements.length}<br>
+                • Timestamp: ${new Date().toLocaleTimeString()}
+            `;
+            debugInfoDiv.innerHTML = debugInfo;
+        }
+        
+        // Actualizar la UI al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            updateUI();
+        });
+        
+        // Sobrescribir setUserRole para actualizar UI
+        const originalSetUserRole = window.setUserRole;
+        window.setUserRole = function(role) {
+            originalSetUserRole(role);
+            setTimeout(updateUI, 100); // Pequeño delay para que se actualice
+        };
+    </script>
+</body>
+</html>
